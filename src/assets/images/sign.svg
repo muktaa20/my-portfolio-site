@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 160" width="620" height="160">
+  <g transform="translate(10,14)">
+    <!-- Monogram circle -->
+    <circle cx="60" cy="70" r="46" fill="none" stroke="#14B8A6" stroke-width="3"></circle>
+    <text x="36" y="92" font-family="Georgia, serif" font-size="56" fill="#14B8A6" font-weight="700">M</text>
+
+    <!-- Name -->
+    <text x="135" y="100" font-family="Segoe Script, cursive" font-size="56" fill="#F97316">ukta</text>
+
+    <!-- underline -->
+    <path d="M120 116 L565 116" stroke="#14B8A6" stroke-width="3" stroke-linecap="round"></path>
+  </g>
+</svg>
