@@ -7,7 +7,6 @@ import ProjectsSection from './components/sections/ProjectsSection';
 import AboutSection from './components/sections/AboutSection';
 import ContactSection from './components/sections/ContactSection';
 import Footer from './components/sections/Footer';
-import BlogsSection from './components/sections/BlogsSection.jsx';
 
 const App = () => {
  return (
@@ -17,7 +16,6 @@ const App = () => {
       <HeroSection />
       <SkillsSection />
       <ProjectsSection />
-      <BlogsSection />
       <AboutSection />
       <ContactSection />
       <Footer />

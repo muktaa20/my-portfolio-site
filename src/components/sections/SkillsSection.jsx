@@ -1,104 +1,284 @@
-import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  Code,
-  FileCode,
-  FileJson,
-  Atom,
-  Wind,
-  Layers,
-  Database,
-  GitBranch,
-  Cloud,
-} from "lucide-react";
+// import React, { useState, useEffect } from "react";
+// import { motion, AnimatePresence } from "framer-motion";
+// import {
+//   Code,
+//   FileCode,
+//   FileJson,
+//   Atom,
+//   Wind,
+//   Layers,
+//   Database,
+//   GitBranch,
+//   Cloud,
+// } from "lucide-react";
+// import { useTheme } from "../../context/ThemeContext";
 
+// // --- Skills Data ---
+// const KNOWN_SKILLS = [
+//   { name: "HTML", icon: <FileCode size={50} /> },
+//   { name: "CSS", icon: <Code size={50} /> },
+//   { name: "JavaScript", icon: <FileJson size={50} /> },
+//   { name: "ReactJS", icon: <Atom size={50} /> },
+//   { name: "Tailwind CSS", icon: <Wind size={50} /> },
+//   { name: "Git", icon: <GitBranch size={50} /> },
+// ];
+
+// const LEARNING_SKILLS = [
+//   { name: "Next.js", icon: <Layers size={50} /> },
+//   { name: "Backend", icon: <Cloud size={50} /> },
+//   { name: "MongoDB", icon: <Database size={50} /> },
+// ];
+
+// export default function SkillsSection() {
+//   const { isDarkMode } = useTheme();
+//   const [currentIndex, setCurrentIndex] = useState(0);
+//   const groupSize = 3;
+
+//   // Auto-slide every 2 seconds
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       setCurrentIndex((prevIndex) =>
+//         (prevIndex + groupSize) % KNOWN_SKILLS.length
+//       );
+//     }, 2000);
+//     return () => clearInterval(interval);
+//   }, []);
+
+//   // Get current group of skills (3 at a time)
+//   const currentSkills = KNOWN_SKILLS.slice(
+//     currentIndex,
+//     currentIndex + groupSize
+//   ).length
+//     ? KNOWN_SKILLS.slice(currentIndex, currentIndex + groupSize)
+//     : KNOWN_SKILLS.slice(currentIndex).concat(
+//         KNOWN_SKILLS.slice(0, (currentIndex + groupSize) % KNOWN_SKILLS.length)
+//       );
+
+//   const cardVariants = {
+//     hidden: { opacity: 0, y: 20 },
+//     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+//     exit: { opacity: 0, y: -20, transition: { duration: 0.4 } },
+//   };
+
+//   return (
+//     <section
+//       id="skills"
+//       className={`py-16 transition-colors duration-500 ${
+//         isDarkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-900"
+//       }`}
+//     >
+//       <div className="container mx-auto px-6">
+//         {/* Heading */}
+//         <h2 className="text-4xl font-bold text-center py-16">My Skills</h2>
+
+//         {/* Known Skills (Grouped Auto Slider) */}
+//         <h3 className="text-xl font-semibold mb-8 text-center">Proficient In</h3>
+
+//         <div className="flex justify-center">
+//           <AnimatePresence mode="wait">
+//             <motion.div
+//               key={currentIndex}
+//               variants={cardVariants}
+//               initial="hidden"
+//               animate="visible"
+//               exit="exit"
+//               className="flex flex-wrap justify-center gap-8"
+//             >
+//               {currentSkills.map((skill, index) => (
+//                 <div
+//                   key={index}
+//                   className={`p-6 min-w-[180px] rounded-xl shadow-md text-center transition-all duration-300 hover:-translate-y-1
+//                   ${
+//                     isDarkMode
+//                       ? "bg-gray-800 hover:bg-gray-700"
+//                       : "bg-white hover:bg-gray-50"
+//                   }`}
+//                 >
+//                   <div
+//                     className={`mb-4 ${
+//                       isDarkMode ? "text-blue-400" : "text-blue-600"
+//                     }`}
+//                   >
+//                     {skill.icon}
+//                   </div>
+//                   <p className="text-lg font-medium">{skill.name}</p>
+//                 </div>
+//               ))}
+//             </motion.div>
+//           </AnimatePresence>
+//         </div>
+
+//         {/* Learning Skills */}
+//         <h3 className="text-xl font-semibold mt-16 mb-8 text-center">
+//           Currently Learning
+//         </h3>
+//         <div className="flex flex-wrap justify-center gap-8">
+//           {LEARNING_SKILLS.map((skill, index) => (
+//             <motion.div
+//               key={index}
+//               className={`p-6 min-w-[180px] rounded-xl shadow-md text-center transition-all duration-300 hover:-translate-y-1
+//               ${
+//                 isDarkMode
+//                   ? "bg-gray-800 hover:bg-gray-700"
+//                   : "bg-white hover:bg-gray-50"
+//               }`}
+//               initial={{ opacity: 0, y: 50 }}
+//               whileInView={{ opacity: 1, y: 0 }}
+//               transition={{ duration: 0.5, delay: index * 0.1 }}
+//             >
+//               <div
+//                 className={`mb-4 ${
+//                   isDarkMode ? "text-green-400" : "text-green-600"
+//                 }`}
+//               >
+//                 {skill.icon}
+//               </div>
+//               <p className="text-lg font-medium">{skill.name}</p>
+//             </motion.div>
+//           ))}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
+
+
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../../context/ThemeContext";
+
+// Import your skill images
+import html from "../../assets/images/html.png";
+import css from "../../assets/images/css.jpg";
+import js from "../../assets/images/js.jpg";
+import reactjs from "../../assets/images/reactjs.png";
+import tailwind from "../../assets/images/tailwind.png";
+import github from "../../assets/images/github.png";
+import next from "../../assets/images/next.png";
+import backend from "../../assets/images/backend.png";
+import mongo from "../../assets/images/mongodb.png"; 
 
 // --- Skills Data ---
 const KNOWN_SKILLS = [
-  { name: "HTML", icon: <FileCode size={50} /> },
-  { name: "CSS", icon: <Code size={50} /> },
-  { name: "JavaScript", icon: <FileJson size={50} /> },
-  { name: "ReactJS", icon: <Atom size={50} /> },
-  { name: "Tailwind CSS", icon: <Wind size={50} /> },
-  { name: "Git", icon: <GitBranch size={50} /> },
+  { name: "HTML", image: html },
+  { name: "CSS", image: css },
+  { name: "JavaScript", image: js },
+  { name: "ReactJS", image: reactjs },
+  { name: "Tailwind CSS", image: tailwind },
+  { name: "GitHub", image: github },
 ];
 
 const LEARNING_SKILLS = [
-  { name: "Next.js", icon: <Layers size={50} /> },
-  { name: "Backend", icon: <Cloud size={50} /> },
-  { name: "MongoDB", icon: <Database size={50} /> },
+  { name: "Next.js", image: next },
+  { name: "Backend", image: backend },
+  { name: "MongoDB", image: mongo },
 ];
 
 export default function SkillsSection() {
   const { isDarkMode } = useTheme();
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const groupSize = 3;
+
+  // Auto-slide every 2 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex(
+        (prevIndex) => (prevIndex + groupSize) % KNOWN_SKILLS.length
+      );
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Get current group of skills (3 at a time)
+  const currentSkills = KNOWN_SKILLS.slice(
+    currentIndex,
+    currentIndex + groupSize
+  ).length
+    ? KNOWN_SKILLS.slice(currentIndex, currentIndex + groupSize)
+    : KNOWN_SKILLS.slice(currentIndex).concat(
+        KNOWN_SKILLS.slice(0, (currentIndex + groupSize) % KNOWN_SKILLS.length)
+      );
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+    exit: { opacity: 0, y: -20, transition: { duration: 0.4 } },
+  };
 
   return (
-    <section 
-      id="skills" 
-      className={`py-12 relative overflow-hidden transition-colors duration-500
-      ${isDarkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-900"}`}
+    <section
+      id="skills"
+      className={`py-16 transition-colors duration-500 ${
+        isDarkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-900"
+      }`}
     >
       <div className="container mx-auto px-6">
-        
-        {/* Centered Heading for all devices */}
-        <h2 className="text-3xl font-bold text-center mb-12">My Skills</h2>
+        {/* Heading */}
+        <h2 className="text-4xl font-bold text-center mb-12">My Skills</h2>
 
-        {/* Proficient Skills Slider */}
-        <h3 className="text-xl font-semibold mb-6 text-center">Proficient In</h3>
-        <div className="relative w-full overflow-hidden">
-          <motion.div
-            className="flex gap-12 pb-4"
-            animate={{ x: ["0%", "-100%"] }}
-            transition={{
-              repeat: Infinity,
-              ease: "linear",
-              duration: 10,
-            }}
-          >
-            {[...KNOWN_SKILLS, ...KNOWN_SKILLS].map((skill, index) => (
-              <motion.div
-                key={index}
-                className={`flex-shrink-0 flex flex-col items-center justify-center p-6 min-w-[180px] rounded-xl shadow-md transition-all duration-300
-                ${isDarkMode ? "bg-gray-800 hover:scale-105" : "bg-white hover:scale-105 shadow-lg"}`}
-                whileHover={{ scale: 1.05 }}
-              >
-                <div 
-                  className={`mb-4 ${isDarkMode ? "text-blue-400" : "text-blue-600"}`}
+        {/* Known Skills (Grouped Auto Slider) */}
+        <h3 className="text-xl font-semibold mb-8 text-center">Proficient In</h3>
+
+        <div className="flex justify-center">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              variants={cardVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="flex flex-wrap justify-center gap-10"
+            >
+              {currentSkills.map((skill, index) => (
+                <div
+                  key={index}
+                  className={`p-6 w-52 rounded-2xl shadow-md text-center hover:scale-105 transition-all duration-300 ${
+                    isDarkMode
+                      ? "bg-gray-800 hover:bg-gray-700"
+                      : "bg-white hover:bg-gray-50"
+                  }`}
                 >
-                  {skill.icon}
+                  <img
+                    src={skill.image}
+                    alt={skill.name}
+                    className="w-20 h-20 object-contain mx-auto mb-4"
+                  />
+                  <p className="text-lg font-medium">{skill.name}</p>
                 </div>
-                <p className="text-lg font-medium">{skill.name}</p>
-              </motion.div>
-            ))}
-          </motion.div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
         </div>
 
-        {/* Currently Learning Skills */}
-        <h3 className="text-xl font-semibold mt-12 mb-6 text-center">Currently Learning</h3>
-        <div className="flex flex-wrap justify-center gap-6">
-          <AnimatePresence>
-            {LEARNING_SKILLS.map((skill, index) => (
-              <motion.div
-                key={index}
-                className={`p-6 flex flex-col items-center justify-center rounded-lg shadow-md transition-colors duration-500 min-w-[180px]
-                ${isDarkMode ? "bg-gray-800" : "bg-white"}`}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-              >
-                <div 
-                  className={`mb-4 ${isDarkMode ? "text-green-400" : "text-green-600"}`}
-                >
-                  {skill.icon}
-                </div>
-                <p className="text-lg font-medium text-center">{skill.name}</p>
-              </motion.div>
-            ))}
-          </AnimatePresence>
+        {/* Learning Skills */}
+        <h3 className="text-xl font-semibold mt-16 mb-8 text-center">
+          Currently Learning
+        </h3>
+        <div className="flex flex-wrap justify-center gap-10">
+          {LEARNING_SKILLS.map((skill, index) => (
+            <motion.div
+              key={index}
+              className={`p-6 w-52 rounded-2xl shadow-md text-center hover:scale-105 transition-all duration-300 ${
+                isDarkMode
+                  ? "bg-gray-800 hover:bg-gray-700"
+                  : "bg-white hover:bg-gray-50"
+              }`}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <img
+                src={skill.image}
+                alt={skill.name}
+                className="w-20 h-20 object-contain mx-auto mb-4"
+              />
+              <p className="text-lg font-medium">{skill.name}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
   );
 }
+
+

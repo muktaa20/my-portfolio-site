@@ -3,7 +3,7 @@ import { ArrowDown, Mail } from "lucide-react";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 import { useTheme } from "../../context/ThemeContext";
 
-import PROFILE_PIC from "../../assets/images/profile.png";
+import PROFILE_PIC from "../../assets/images/mukta.jpg";
 import { containerVariants, itemVariants } from "../../utils/helper";
 
 const HeroSection = () => {
@@ -144,10 +144,10 @@ const HeroSection = () => {
               <motion.button
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() => scrollToSection("work")}
+                 onClick={() => scrollToSection("work")}
                 className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full text-sm uppercase tracking-wider font-medium transition-all duration-300"
               >
-                View Work
+                Resume
               </motion.button>
               <motion.button
                 whileHover={{ y: -2 }}
@@ -247,7 +247,7 @@ const HeroSection = () => {
                 onClick={() => scrollToSection("work")}
                 className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-full text-sm uppercase tracking-wider font-medium transition-all duration-300"
               >
-                View Work
+                Resume
               </motion.button>
               <motion.button
                 whileHover={{ y: -2 }}

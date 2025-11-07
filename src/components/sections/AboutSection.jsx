@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { useTheme } from "../../context/ThemeContext"; 
+import { useTheme } from "../../context/ThemeContext";
 import PROFILE_PIC from "../../assets/images/signa.svg";
 
 const sectionVariants = {
@@ -8,10 +8,7 @@ const sectionVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.8,
-      ease: "easeOut",
-    },
+    transition: { duration: 0.8, ease: "easeOut" },
   },
 };
 
@@ -20,11 +17,7 @@ const textVariants = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: {
-      duration: 0.8,
-      delay: 0.5,
-      ease: "easeOut",
-    },
+    transition: { duration: 0.8, delay: 0.5, ease: "easeOut" },
   },
 };
 
@@ -33,11 +26,7 @@ const imageVariants = {
   visible: {
     opacity: 1,
     scale: 1,
-    transition: {
-      duration: 0.8,
-      delay: 0.7,
-      ease: "easeOut",
-    },
+    transition: { duration: 0.8, delay: 0.7, ease: "easeOut" },
   },
 };
 
@@ -52,7 +41,7 @@ export default function AboutSection() {
       }`}
     >
       <div className="container mx-auto px-6 lg:px-12 max-w-5xl">
-        {/* Main Heading */}
+        {/* Heading */}
         <div className="text-center mb-16">
           <motion.p
             className={`text-sm md:text-base font-semibold tracking-widest uppercase mb-2 ${
@@ -76,7 +65,7 @@ export default function AboutSection() {
           </motion.h2>
         </div>
 
-        {/* Content Grid */}
+        {/* Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
           <motion.div
@@ -104,8 +93,8 @@ export default function AboutSection() {
             >
               As a dedicated frontend developer, my mission is to transform
               creative ideas into stunning and intuitive web applications. I
-              thrive on building seamless user experiences that are not only
-              visually appealing but also highly performant and accessible.
+              thrive on building seamless user experiences that are visually
+              appealing and highly performant.
             </motion.p>
             <motion.p
               className={`text-base md:text-lg leading-relaxed ${
@@ -113,17 +102,14 @@ export default function AboutSection() {
               }`}
               variants={textVariants}
             >
-              I specialize in modern technologies like **React**, **Next.js**,
-              and **Tailwind CSS**, and am committed to writing clean,
-              maintainable, and scalable code. I believe in continuous learning
-              and enjoy tackling complex challenges to deliver exceptional
-              digital products.
+              I specialize in modern technologies like <b>React</b>, <b>Next.js</b>, and{" "}
+              <b>Tailwind CSS</b>, and I’m passionate about writing clean,
+              maintainable, and scalable code.
             </motion.p>
           </motion.div>
 
           {/* Image Section */}
           <motion.div
-            // Use 'hidden' to hide on mobile, and 'md:flex' to show on medium screens and up
             className="hidden md:flex justify-center md:justify-end"
             variants={sectionVariants}
             initial="hidden"
@@ -132,9 +118,10 @@ export default function AboutSection() {
           >
             <motion.img
               src={PROFILE_PIC}
-              alt="Developer Profile"
-              // Removed the shadow and border classes here
-              className="rounded-xl"
+              alt="Developer Signature"
+              className={`w-64 h-auto rounded-xl transition duration-500 ${
+                isDarkMode ? "invert brightness-0" : "brightness-0 invert-0"
+              }`}
               variants={imageVariants}
             />
           </motion.div>
